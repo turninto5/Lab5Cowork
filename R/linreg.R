@@ -38,10 +38,10 @@ rkolada <- setRefClass(
       stop("Error: Unable to fetch data. Status code: ", status_code(response))
     }
     
-    kpiData <- parseJson(response)
+    data <- parseJson(response)
     
     # Return the structured KPI data as a data frame
-    return(as.data.frame(kpiData))
+    return(as.data.frame(data))
   }, 
 
   parseJson = function(response){
