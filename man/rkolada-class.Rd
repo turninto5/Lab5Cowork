@@ -5,11 +5,44 @@
 \alias{rkolada-class}
 \alias{rkolada}
 \title{rkolada}
+\arguments{
+\item{kpi_id}{Unique identifier of the KPI in rkolada. Defaults to `NA`}
+
+\item{municipality}{Unique identifier of the municipality in rkolada. Defaults to `NA`}
+
+\item{year}{The year to only filter data form this oarameter. Defaults to `NA`.}
+
+\item{searchStr}{The string search in the database of all KPI. Defaults to `NA`.}
+}
 \value{
 An object that interacts with the Kolada API
+
+A data.frame of the reponse from the kolada API
+
+A data.frame of the reponse from the kolada API
+
+A data.frame of the data from the kolada API
+
+A data.frame of the data from the kolada API
+
+A data.frame of the data from the kolada API
+
+A data.frame of the data from the kolada API
 }
 \description{
 This class uses the Kolada API
+
+Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+
+Function GetAllData(kpi_id) returns the residuals
+
+Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+
+Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+
+Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+
+Function GetAndSetKpiSearchData(kpi_id) returns the residuals
 }
 
 \examples{
