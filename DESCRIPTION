@@ -1,14 +1,24 @@
-Package: Lab5Cowork
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Package: lab4
+Type: Package
+Title: Lab4
+Version: 1.0
+Date: 2024-09-22
+Author: Trace and Christian
+Maintainer: <qincu578@student.liu.se"> <chjon338@student.liu.se> 
+Description: This package will provide functions for linjear regression. 
+License: GPL-3
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
+Depends: R (>= 3.5.0)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2024-10-6 09:04:00 UTC; kbart
+Imports:
+    httr,
+    methods,
+    jsonlite
 RoxygenNote: 7.3.2
-URL: https://github.com/turninto5/Lab5Cowork
-BugReports: https://github.com/turninto5/Lab5Cowork/issues
+VignetteBuilder: knitr
