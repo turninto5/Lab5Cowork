@@ -10,7 +10,7 @@
 
 \item{municipality}{Unique identifier of the municipality in rkolada. Defaults to `NA`}
 
-\item{year}{The year to only filter data form this oarameter. Defaults to `NA`.}
+\item{year}{The year to only filter data form this parameter. Defaults to `NA`.}
 
 \item{searchStr}{The string search in the database of all KPI. Defaults to `NA`.}
 
@@ -36,17 +36,17 @@ A data.frame of the data from the kolada API
 \description{
 This class uses the Kolada API
 
-Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+Function GetAndSetKpiSearchData(searchStr) returns the residuals
 
-Function GetAllData(kpi_id) returns the residuals
+Function GetAllData(kpi_id, municipality, year) returns the residuals
 
-Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+Function GetKpiData(kpiString)returns the residuals
 
-Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+Function GetManicipalityData(municipalityString)returns the residuals
 
-Private function, only for internal use. Makes an API request given a query
+Private function apiRequest(queryUrl), only for internal use. Makes an API request given a query
 
-Private function, only for internal use. Parses the JSON response from the API
+Private function parseJson(response), only for internal use. Parses the JSON response from the API
 }
 
 \examples{

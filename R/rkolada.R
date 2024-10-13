@@ -34,12 +34,12 @@ rkolada <- setRefClass(
   #' @description Function GetAllData(kpi_id, municipality, year) returns the residuals
   #' @param kpi_id Unique identifier of the KPI in rkolada. Defaults to `NA`
   #' @param municipality Unique identifier of the municipality in rkolada. Defaults to `NA`
-  #' @param year The year to only filter data form this oarameter. Defaults to `NA`.
+  #' @param year The year to only filter data form this parameter. Defaults to `NA`.
   #' @return A data.frame of the reponse from the kolada API
   GetAllData = function(kpi_id = NA, municipality = NA, year = NA) {
     municipalityData <- GetManicipalityData(municipality)
     queryUrl <- paste0(.self$api, "/data/kpi/", URLencode(kpi_id), "/municipality/", URLencode(municipalityData[["id"]]), "/year/", URLencode(year))
-    
+
     response <- .self$apiRequest(queryUrl)
     if(!is.data.frame(response)){
       response <- as.data.frame(response)
@@ -50,7 +50,7 @@ rkolada <- setRefClass(
   #' @description Function GetKpiData(kpiString)returns the residuals
   #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
   #' @return A data.frame of the data from the kolada API
-  GetKpiData = function(kpiString){
+  GetKpiData = function(kpiString = NA){
     queryUrl <- paste0(.self$api, "/kpi?title=", URLencode(kpiString))
     return(.self$apiRequest(queryUrl))
   },
@@ -58,7 +58,7 @@ rkolada <- setRefClass(
   #' @description Function GetManicipalityData(municipalityString)returns the residuals
   #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
   #' @return A data.frame of the data from the kolada API
-  GetManicipalityData = function(municipalityString){
+  GetManicipalityData = function(municipalityString = NA){
   queryUrl <- paste0(.self$api, "/municipality?title=", URLencode(municipalityString))
   return(.self$apiRequest(queryUrl))
   },

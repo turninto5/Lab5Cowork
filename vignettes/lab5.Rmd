@@ -17,3 +17,40 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(lab5)
 ```
+
+# Introduction
+
+This is prgram which can access to data from Kolada. It consists of a class named rkolada.
+
+# Example
+
+You can run this code to initialize a rkolada class.
+```{r rkolada example}
+object <- rkolada()
+```
+Besides, there are some functions provided to access data:
+## GetAndSetKpiSearchData:
+This function returns data based on the KPI title and set member variable.
+```{r}
+object$GetAndSetKpiSearchData(searchStr = "Skatt")
+```
+
+## GetAllData
+This function returns data based on the KPI ID, municipality and year.
+```{r GetAllData}
+object$GetAllData(kpi_id = "N00903", municipality = "1281", year = "2009")
+```
+
+## GetKpiData:
+This function returns data based on the KPI title, but directly return data.
+```{r}
+object$GetKpiData(kpiString = "Skatt")
+```
+
+## GetManicipalityData
+This fucntion returns data based on municipality ID.
+```{r}
+object$GetManicipalityData(municipalityString = "Lund")
+```
+
+
