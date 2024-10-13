@@ -13,6 +13,10 @@
 \item{year}{The year to only filter data form this oarameter. Defaults to `NA`.}
 
 \item{searchStr}{The string search in the database of all KPI. Defaults to `NA`.}
+
+\item{queryUrl}{A string of a URL to interact with the API.}
+
+\item{response}{The raw JSON from the API.}
 }
 \value{
 An object that interacts with the Kolada API
@@ -40,9 +44,9 @@ Function GetAndSetKpiSearchData(kpi_id) returns the residuals
 
 Function GetAndSetKpiSearchData(kpi_id) returns the residuals
 
-Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+Private function, only for internal use. Makes an API request given a query
 
-Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+Private function, only for internal use. Parses the JSON response from the API
 }
 
 \examples{

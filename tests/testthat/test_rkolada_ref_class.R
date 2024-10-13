@@ -1,11 +1,5 @@
 #context("rkolada")
 
-# test_that("lenreg rejects errounous input", {
-#   expect_error(linreg_mod <- linreg$new(formula = Petal.Length~Sepdsal.Width+Sepal.Length, data=iris))
-#   expect_error(linreg_mod <- linreg$new(formula = Petal.Length~Sepdsal.Width+Sepal.Length, data=irfsfdis))
-# })
-
-
 test_that("class is correct", {
   instance <- rkolada$new()
   expect_true(class(instance)[1] == "rkolada")
@@ -40,11 +34,36 @@ test_that("GetAndSetKpiSearchData bad characters", {
   expect_equal(instance$kpiData$data, NULL)
 })
 
-# test_that("pred() method works", {
-#   linreg_mod <- linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 
-#   expect_equal(round(unname(linreg_mod$pred()[c(1,5,7)]),2), c(1.85, 1.53, 1.09))    
-# })
+test_that("GetKpiData ", {
+  # tested above 
+  instance <- rkolada$new() 
+  searchStr <- "Skatt"
+
+  expect_silent(instance$GetKpiData(searchStr))
+})
+
+test_that("GetManicipalityData finds the object and the data is correct", {
+  instance <- rkolada$new() 
+  searchStr <- "Oxelösund"
+
+  data <- (instance$GetManicipalityData(searchStr))
+  expect_equal(data$id,"0481")
+  expect_equal(data$type, "K")
+})
+
+test_that("GetAllData ", {
+  kpi_id = "N00041"
+  municipality = "Oxelösund"
+  year = "2009"
+  instance <- rkolada$new() 
+
+  data <- instance$GetAllData(kpi_id,municipality,year)
+  print(dim(data))
+  expect_true(is.data.frame(data))
+  expect_true(all(dim(data)==c(1,4)))
+})
+
 
 # test_that("resid() method works", {
 #   linreg_mod <- linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data=iris)

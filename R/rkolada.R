@@ -23,7 +23,7 @@ rkolada <- setRefClass(
       .self$api <- "http://api.kolada.se/v2"
     },
 
-  #' @description Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+  #' @description Function GetAndSetKpiSearchData(searchStr) returns the residuals
   #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
   #' @return A data.frame of the reponse from the kolada API
   GetAndSetKpiSearchData = function(searchStr = NA) {
@@ -31,24 +31,23 @@ rkolada <- setRefClass(
     return(.self$kpiData)
   },
 
-  #' @description Function GetAllData(kpi_id) returns the residuals
+  #' @description Function GetAllData(kpi_id, municipality, year) returns the residuals
   #' @param kpi_id Unique identifier of the KPI in rkolada. Defaults to `NA`
   #' @param municipality Unique identifier of the municipality in rkolada. Defaults to `NA`
   #' @param year The year to only filter data form this oarameter. Defaults to `NA`.
   #' @return A data.frame of the reponse from the kolada API
   GetAllData = function(kpi_id = NA, municipality = NA, year = NA) {
-    municipalityData <- getManicipalityData(municipality)
+    municipalityData <- GetManicipalityData(municipality)
     queryUrl <- paste0(.self$api, "/data/kpi/", URLencode(kpi_id), "/municipality/", URLencode(municipalityData[["id"]]), "/year/", URLencode(year))
     
     response <- .self$apiRequest(queryUrl)
-    print(response)
     if(!is.data.frame(response)){
       response <- as.data.frame(response)
     }
     return(response)
   },
 
-  #' @description Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+  #' @description Function GetKpiData(kpiString)returns the residuals
   #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
   #' @return A data.frame of the data from the kolada API
   GetKpiData = function(kpiString){
@@ -56,7 +55,7 @@ rkolada <- setRefClass(
     return(.self$apiRequest(queryUrl))
   },
 
-  #' @description Function GetAndSetKpiSearchData(kpi_id) returns the residuals
+  #' @description Function GetManicipalityData(municipalityString)returns the residuals
   #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
   #' @return A data.frame of the data from the kolada API
   GetManicipalityData = function(municipalityString){
@@ -64,8 +63,8 @@ rkolada <- setRefClass(
   return(.self$apiRequest(queryUrl))
   },
 
-  #' @description Function GetAndSetKpiSearchData(kpi_id) returns the residuals
-  #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
+  #' @description Private function apiRequest(queryUrl), only for internal use. Makes an API request given a query
+  #' @param queryUrl A string of a URL to interact with the API.
   #' @return A data.frame of the data from the kolada API
   apiRequest = function(queryUrl){
   # Make the GET request to the Kolada API
@@ -80,8 +79,8 @@ rkolada <- setRefClass(
     return(as.data.frame(data))
   },
 
-  #' @description Function GetAndSetKpiSearchData(kpi_id) returns the residuals
-  #' @param searchStr The string search in the database of all KPI. Defaults to `NA`.
+  #' @description Private function parseJson(response), only for internal use. Parses the JSON response from the API
+  #' @param response The raw JSON from the API.
   #' @return A data.frame of the data from the kolada API
   parseJson = function(response){
     # Parse the JSON response into an R list
